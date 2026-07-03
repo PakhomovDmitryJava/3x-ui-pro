@@ -285,6 +285,7 @@ configure_nginx() {
 
     # SNI-based stream: reality → 8443, domain → 7443
     cat > /etc/nginx/stream-enabled/stream.conf <<EOF
+map_hash_bucket_size 128;
 map \$ssl_preread_server_name \$sni_name {
     hostnames;
     ${reality_domain}    xray;
